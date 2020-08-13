@@ -1,0 +1,263 @@
+swagger: "2.0"
+info:
+    title: goademo API
+    version: ""
+host: localhost:80
+consumes:
+    - application/json
+    - application/xml
+    - application/gob
+produces:
+    - application/json
+    - application/xml
+    - application/gob
+paths:
+    /demo/{id}:
+        get:
+            tags:
+                - demo
+            summary: show demo
+            operationId: demo#show
+            parameters:
+                - name: id
+                  in: path
+                  required: true
+                  type: integer
+            responses:
+                "200":
+                    description: OK response.
+                    schema:
+                        $ref: '#/definitions/DemoShowResponseBodyExtended'
+            schemes:
+                - http
+    /demo/list0:
+        get:
+            tags:
+                - demo
+            summary: list0 demo
+            operationId: demo#list0
+            responses:
+                "200":
+                    description: OK response.
+                    schema:
+                        $ref: '#/definitions/DemoList0ResponseBody'
+                        required:
+                            - items
+            schemes:
+                - http
+    /demo/list1:
+        get:
+            tags:
+                - demo
+            summary: list1 demo
+            operationId: demo#list1
+            responses:
+                "200":
+                    description: OK response.
+                    schema:
+                        $ref: '#/definitions/DemoList1ResponseBody'
+                        required:
+                            - items
+            schemes:
+                - http
+    /demo/list2:
+        get:
+            tags:
+                - demo
+            summary: list2 demo
+            operationId: demo#list2
+            responses:
+                "200":
+                    description: OK response.
+                    schema:
+                        $ref: '#/definitions/DemoList2ResponseBody'
+                        required:
+                            - items
+            schemes:
+                - http
+    /demo/list3:
+        get:
+            tags:
+                - demo
+            summary: list3 demo
+            operationId: demo#list3
+            responses:
+                "200":
+                    description: OK response.
+                    schema:
+                        $ref: '#/definitions/DemoList3ResponseBody'
+                        required:
+                            - items
+            schemes:
+                - http
+    /demo/plain-list-0:
+        get:
+            tags:
+                - demo
+            summary: plain-list-0 demo
+            operationId: demo#plain-list-0
+            responses:
+                "200":
+                    description: OK response.
+                    schema:
+                        $ref: '#/definitions/DemoGoademoThingResponseCollection'
+            schemes:
+                - http
+    /demo/plain-list-1:
+        get:
+            tags:
+                - demo
+            summary: plain-list-1 demo
+            operationId: demo#plain-list-1
+            responses:
+                "200":
+                    description: OK response.
+                    schema:
+                        $ref: '#/definitions/DemoGoademoThingResponseCollection'
+            schemes:
+                - http
+definitions:
+    DemoGoademoThingResponseCollection:
+        title: 'Mediatype identifier: application/vnd.goademo.thing; type=collection; view=default'
+        type: array
+        items:
+            $ref: '#/definitions/GoademoThingResponse'
+        description: Plain-List-0ResponseBody is the result type for an array of GoademoThingResponse (default view)
+        example:
+            - id: 8921858482185203540
+              name: Autem non.
+            - id: 8921858482185203540
+              name: Autem non.
+            - id: 8921858482185203540
+              name: Autem non.
+    DemoList0ResponseBody:
+        title: DemoList0ResponseBody
+        type: object
+        properties:
+            items:
+                $ref: '#/definitions/GoademoThingResponseBodyCollection'
+        example:
+            items:
+                - age: 1616339049004770121
+                  id: 7719026595162657775
+                  name: Id sed aut iusto laboriosam.
+                - age: 1616339049004770121
+                  id: 7719026595162657775
+                  name: Id sed aut iusto laboriosam.
+        required:
+            - items
+    DemoList1ResponseBody:
+        title: DemoList1ResponseBody
+        type: object
+        properties:
+            items:
+                $ref: '#/definitions/GoademoThingResponseBodyCollection'
+        example:
+            items:
+                - age: 1616339049004770121
+                  id: 7719026595162657775
+                  name: Id sed aut iusto laboriosam.
+                - age: 1616339049004770121
+                  id: 7719026595162657775
+                  name: Id sed aut iusto laboriosam.
+        required:
+            - items
+    DemoList2ResponseBody:
+        title: DemoList2ResponseBody
+        type: object
+        properties:
+            items:
+                $ref: '#/definitions/GoademoThingResponseBodyCollection'
+        example:
+            items:
+                - age: 1616339049004770121
+                  id: 7719026595162657775
+                  name: Id sed aut iusto laboriosam.
+                - age: 1616339049004770121
+                  id: 7719026595162657775
+                  name: Id sed aut iusto laboriosam.
+        required:
+            - items
+    DemoList3ResponseBody:
+        title: DemoList3ResponseBody
+        type: object
+        properties:
+            items:
+                $ref: '#/definitions/GoademoThingResponseBodyCollection'
+        example:
+            items:
+                - age: 1616339049004770121
+                  id: 7719026595162657775
+                  name: Id sed aut iusto laboriosam.
+                - age: 1616339049004770121
+                  id: 7719026595162657775
+                  name: Id sed aut iusto laboriosam.
+        required:
+            - items
+    DemoShowResponseBodyExtended:
+        title: 'Mediatype identifier: application/vnd.goademo.thing; view=extended'
+        type: object
+        properties:
+            age:
+                type: integer
+                example: 2279931200267780620
+                format: int64
+            id:
+                type: integer
+                example: 5127326638471542359
+                format: int64
+            name:
+                type: string
+                example: Voluptatem eos repudiandae minima maxime.
+        description: ShowResponseBody result type (extended view) (default view)
+        example:
+            age: 4178165179936447188
+            id: 6526766768340307376
+            name: Et amet nihil ipsum voluptatem autem.
+        required:
+            - id
+    GoademoThingResponse:
+        title: 'Mediatype identifier: application/vnd.goademo.thing; view=default'
+        type: object
+        properties:
+            id:
+                type: integer
+                example: 8895050644750747659
+                format: int64
+            name:
+                type: string
+                example: Voluptatem qui.
+        description: GoademoThingResponse result type (default view)
+        example:
+            id: 2160446950399833727
+            name: Libero in aut.
+        required:
+            - id
+    GoademoThingResponseBody:
+        title: 'Mediatype identifier: application/vnd.goademo.thing; view=default'
+        type: object
+        properties:
+            id:
+                type: integer
+                example: 8612875667068145333
+                format: int64
+            name:
+                type: string
+                example: Recusandae itaque voluptatem qui.
+        description: GoademoThingResponseBody result type (default view)
+        example:
+            id: 1436880380658054631
+            name: Temporibus aperiam et libero.
+        required:
+            - id
+    GoademoThingResponseBodyCollection:
+        title: 'Mediatype identifier: application/vnd.goademo.thing; type=collection; view=default'
+        type: array
+        items:
+            $ref: '#/definitions/GoademoThingResponseBody'
+        description: GoademoThingCollectionResponseBody is the result type for an array of GoademoThingResponseBody (default view)
+        example:
+            - id: 8921858482185203540
+              name: Autem non.
+            - id: 8921858482185203540
+              name: Autem non.
