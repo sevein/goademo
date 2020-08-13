@@ -1,0 +1,115 @@
+openapi: 3.0.3
+info:
+  title: goademo API
+  version: "1.0"
+servers:
+- url: http://localhost:80
+paths:
+  /demo:
+    get:
+      tags:
+      - demo
+      summary: list demo
+      operationId: demo#list
+      parameters:
+      - name: name
+        in: query
+        allowEmptyValue: true
+        schema:
+          type: string
+          example: Placeat excepturi fuga eveniet.
+        example: Velit et recusandae ab sint.
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListResponseBody'
+              example:
+                items:
+                - id: 7719026595162657775
+                  name: Id sed aut iusto laboriosam.
+                - id: 7719026595162657775
+                  name: Id sed aut iusto laboriosam.
+                - id: 7719026595162657775
+                  name: Id sed aut iusto laboriosam.
+                - id: 7719026595162657775
+                  name: Id sed aut iusto laboriosam.
+                next_cursor: Reiciendis aut et amet nihil ipsum.
+  /demo/{id}:
+    get:
+      tags:
+      - demo
+      summary: show demo
+      operationId: demo#show
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          example: 17626721134972385875
+        example: 2326188630946894542
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoademoStoredDemo'
+              example:
+                id: 8687614033081709263
+                name: Et sed corporis voluptatem.
+components:
+  schemas:
+    GoademoStoredDemo:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 10214703878651981291
+        name:
+          type: string
+          description: Name of the demo
+          example: Laudantium rerum corrupti sed.
+      example:
+        id: 2724462120674448981
+        name: Et quia.
+      required:
+      - id
+      - name
+    GoademoStoredDemoCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/GoademoStoredDemo'
+      example:
+      - id: 7719026595162657775
+        name: Id sed aut iusto laboriosam.
+      - id: 7719026595162657775
+        name: Id sed aut iusto laboriosam.
+      - id: 7719026595162657775
+        name: Id sed aut iusto laboriosam.
+      - id: 7719026595162657775
+        name: Id sed aut iusto laboriosam.
+    ListResponseBody:
+      type: object
+      properties:
+        items:
+          $ref: '#/components/schemas/GoademoStoredDemoCollection'
+        next_cursor:
+          type: string
+          example: Adipisci sed voluptates distinctio necessitatibus qui non.
+      example:
+        items:
+        - id: 7719026595162657775
+          name: Id sed aut iusto laboriosam.
+        - id: 7719026595162657775
+          name: Id sed aut iusto laboriosam.
+        - id: 7719026595162657775
+          name: Id sed aut iusto laboriosam.
+        - id: 7719026595162657775
+          name: Id sed aut iusto laboriosam.
+        next_cursor: Et ab illum voluptas quidem voluptas.
+      required:
+      - items

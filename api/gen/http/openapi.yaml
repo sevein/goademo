@@ -1,0 +1,124 @@
+swagger: "2.0"
+info:
+  title: goademo API
+  version: ""
+host: localhost:80
+consumes:
+- application/json
+- application/xml
+- application/gob
+produces:
+- application/json
+- application/xml
+- application/gob
+paths:
+  /demo:
+    get:
+      tags:
+      - demo
+      summary: list demo
+      operationId: demo#list
+      parameters:
+      - name: name
+        in: query
+        required: false
+        type: string
+      responses:
+        "200":
+          description: OK response.
+          schema:
+            $ref: '#/definitions/DemoListResponseBody'
+            required:
+            - items
+      schemes:
+      - http
+  /demo/{id}:
+    get:
+      tags:
+      - demo
+      summary: show demo
+      operationId: demo#show
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK response.
+          schema:
+            $ref: '#/definitions/DemoShowResponseBody'
+      schemes:
+      - http
+definitions:
+  DemoListResponseBody:
+    title: DemoListResponseBody
+    type: object
+    properties:
+      items:
+        $ref: '#/definitions/GoademoStoredDemoResponseBodyCollection'
+      next_cursor:
+        type: string
+        example: Non possimus aut doloribus sed.
+    example:
+      items:
+      - id: 7719026595162657775
+        name: Id sed aut iusto laboriosam.
+      - id: 7719026595162657775
+        name: Id sed aut iusto laboriosam.
+      - id: 7719026595162657775
+        name: Id sed aut iusto laboriosam.
+      - id: 7719026595162657775
+        name: Id sed aut iusto laboriosam.
+      next_cursor: Ea dicta et alias molestiae quidem quo.
+    required:
+    - items
+  DemoShowResponseBody:
+    title: 'Mediatype identifier: application/vnd.goademo.stored-demo; view=default'
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 10247639382569991307
+        format: int64
+      name:
+        type: string
+        description: Name of the demo
+        example: Earum consectetur tenetur voluptatem.
+    description: ShowResponseBody result type (default view)
+    example:
+      id: 17186407805849367684
+      name: Eos libero in aut nostrum eos.
+    required:
+    - id
+    - name
+  GoademoStoredDemoResponseBody:
+    title: 'Mediatype identifier: application/vnd.goademo.stored-demo; view=default'
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 7576731311914771239
+        format: int64
+      name:
+        type: string
+        description: Name of the demo
+        example: Itaque voluptatem qui.
+    description: GoademoStored-DemoResponseBody result type (default view)
+    example:
+      id: 1436880380658054631
+      name: Temporibus aperiam et libero.
+    required:
+    - id
+    - name
+  GoademoStoredDemoResponseBodyCollection:
+    title: 'Mediatype identifier: application/vnd.goademo.stored-demo; type=collection; view=default'
+    type: array
+    items:
+      $ref: '#/definitions/GoademoStoredDemoResponseBody'
+    description: GoademoStored-DemoCollectionResponseBody is the result type for an array of GoademoStored-DemoResponseBody (default view)
+    example:
+    - id: 7339290064658678495
+      name: Autem et qui sed delectus autem.
+    - id: 7339290064658678495
+      name: Autem et qui sed delectus autem.
